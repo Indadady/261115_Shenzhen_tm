@@ -72,6 +72,13 @@
         .schedule-media { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
         @media(min-width:768px) { .schedule-media { flex-direction: row; align-items: flex-start; gap: 1rem; } .schedule-media .schedule-desc { flex: 1; min-width: 0; } }
         .schedule-thumb { display: block; width: 100%; max-width: 12rem; aspect-ratio: 4/3; object-fit: cover; border-radius: 0.75rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(15,23,42,.08); flex-shrink: 0; }
+        .section-eyebrow { color: var(--tm); font-weight: 900; letter-spacing: 0.18em; font-size: 0.7rem; text-transform: uppercase; }
+        .section-title { font-size: 1.875rem; line-height: 1.25; font-weight: 800; color: #1e293b; margin-top: 0.5rem; }
+        .section-sub { font-size: 0.875rem; color: #64748b; margin-top: 0.5rem; line-height: 1.6; }
+        .tm-panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 1.5rem; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+        .tm-soft { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1.25rem; }
+        .tm-chip { display: inline-flex; align-items: center; gap: .35rem; font-size: 11px; font-weight: 800; color: var(--tm); background: #eff6ff; border: 1px solid #dbeafe; border-radius: 999px; padding: .25rem .7rem; }
+        .hl-card h4 { color: var(--tm) !important; }
         .contact-row { display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 0.75rem; padding: 0.875rem 1rem; }
         .contact-badge { flex-shrink: 0; width: 3rem; text-align: center; font-size: 0.65rem; font-weight: 800; background: rgba(0,64,152,.25); color: #93c5fd; padding: 0.35rem 0.25rem; border-radius: 0.5rem; }
         @media screen { #print-area { display: none !important; } }
@@ -143,20 +150,19 @@
             </div>
             <div class="flex-1 overflow-x-auto no-scrollbar ml-4 md:ml-8">
                 <div class="flex items-center space-x-1 md:space-x-3 whitespace-nowrap pr-4 text-sm">
-                    <a href="#home" class="px-3 py-2 font-bold text-slate-600 hover:text-tm rounded-lg">홈</a>
-                    <a href="#highlights" class="px-3 py-2 font-bold text-tm rounded-lg">핵심포인트</a>
+                    <a href="#home" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">홈</a>
+                    <a href="#highlights" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">핵심</a>
                     <a href="#flight" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">항공</a>
-                    <a href="#seat-checkin" class="px-3 py-2 font-bold text-sky-700 hover:bg-sky-50 rounded-lg">좌석·체크인</a>
-                    <a href="#arrival-card" class="px-3 py-2 font-bold text-amber-700 hover:text-amber-900 rounded-lg">입국심사</a>
+                    <a href="#seat-checkin" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">좌석·체크인</a>
+                    <a href="#arrival-card" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">입국심사</a>
                     <a href="#map-section" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">동선</a>
-                    <a href="#schedule" class="px-3 py-2 font-bold text-tm rounded-lg">상세일정</a>
+                    <a href="#schedule" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">일정</a>
                     <a href="#places" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">방문지</a>
                     <a href="#hotel" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">호텔</a>
-                    <a href="#video" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">영상</a>
                     <a href="#smart-info" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">여행비서</a>
-                    <a href="#chinese" class="px-3 py-2 font-bold text-amber-700 hover:text-amber-900 rounded-lg">중국어회화</a>
+                    <a href="#chinese" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">중국어</a>
                     <a href="#check" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">준비물</a>
-                    <a href="#contact" class="px-3 py-2 font-bold text-red-600 rounded-lg">연락망</a>
+                    <a href="#contact" class="px-3 py-2 font-bold text-red-600 hover:text-red-700 rounded-lg">연락망</a>
                 </div>
             </div>
             <div class="flex items-center gap-1 shrink-0">
@@ -368,8 +374,8 @@
                     <p class="text-xs md:text-sm text-blue-100 font-medium mt-1">대한항공 KE835 / KE836 · 인천 ↔ 심천(보안)</p>
                 </div>
                 <div class="mt-8 flex flex-wrap justify-center gap-3">
-                    <a href="#schedule" class="bg-white text-tm font-extrabold px-6 py-3 rounded-full shadow-lg hover:bg-sky-50">상세일정 보기</a>
-                    <a href="#map-section" class="bg-white/15 border border-white/40 text-white font-bold px-6 py-3 rounded-full backdrop-blur-sm">동선 지도</a>
+                    <a href="#schedule" class="bg-white text-tm font-extrabold px-6 py-3 rounded-2xl shadow-lg hover:bg-sky-50">상세일정 보기</a>
+                    <a href="#map-section" class="bg-white/15 border border-white/40 text-white font-bold px-6 py-3 rounded-2xl backdrop-blur-sm">동선 지도</a>
                 </div>
             </div>
         </section>
@@ -377,55 +383,59 @@
         <section id="highlights" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10">
-                    <span class="text-tm font-black tracking-widest text-xs uppercase">OVERVIEW</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">한눈에 보는 심천 하이테크 여정</h2>
-                    <p class="text-sm text-slate-500 mt-2">AI·로봇·드론·자율주행이 가장 먼저 상용화되는 도시, 심천에서 박람회와 시티를 하루 리듬으로 연결합니다.</p>
+                    <span class="section-eyebrow">OVERVIEW</span>
+                    <h2 class="section-title">한눈에 보는 심천 하이테크 여정</h2>
+                    <p class="section-sub">AI·로봇·드론·자율주행이 가장 먼저 상용화되는 도시, 심천에서 박람회와 시티를 하루 리듬으로 연결합니다.</p>
                 </div>
 
-                <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 mb-8 shadow-lg border border-slate-700">
-                    <p class="text-[11px] font-extrabold tracking-[0.2em] text-sky-300 mb-4">HITECH FAIR · CITY INSIGHT</p>
-                    <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm leading-relaxed">
-                        <p><span class="text-sky-300 font-bold">행사</span> · 심천 하이테크 박람회 3박 4일 (시티투어 포함)</p>
-                        <p><span class="text-sky-300 font-bold">일정</span> · 2026.11.25(수) ~ 11.28(토)</p>
-                        <p><span class="text-sky-300 font-bold">핵심</span> · 제28회 CHTF 2026 종일 관람 + 심천 시티 동선</p>
-                        <p><span class="text-sky-300 font-bold">항공</span> · 대한항공 직항 KE835 / KE836 (인천 ↔ 심천 보안)</p>
-                        <p><span class="text-sky-300 font-bold">숙박</span> · BHD HOTEL(宝亨达) 또는 동급 · 2인1실 3박</p>
-                        <p><span class="text-sky-300 font-bold">인원</span> · 20명 단독 · 10트윈 · 45인승 전용차량</p>
-                        <p class="sm:col-span-2"><span class="text-sky-300 font-bold">관전 포인트</span> · AI·로봇 · 드론 · 자율주행 · 반도체 · IT/빅데이터 · 첨단의료 · 청정에너지</p>
-                        <p class="sm:col-span-2"><span class="text-sky-300 font-bold">포함</span> · 지상비 $500/인 (호텔·버스·입장료·식사·가이드·가이드팁)</p>
+                <div class="tm-panel p-6 md:p-8 mb-8 bg-gradient-to-br from-[#004098]/[5%] via-white to-sky-50 border-tm/15">
+                    <div class="flex flex-wrap items-center gap-2 mb-5">
+                        <span class="tm-chip">HITECH FAIR</span>
+                        <span class="tm-chip">CITY INSIGHT</span>
+                        <span class="tm-chip">20명 단독</span>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-slate-700 leading-relaxed">
+                        <p><span class="text-tm font-bold">행사</span> · 심천 하이테크 박람회 3박 4일 (시티투어 포함)</p>
+                        <p><span class="text-tm font-bold">일정</span> · 2026.11.25(수) ~ 11.28(토)</p>
+                        <p><span class="text-tm font-bold">핵심</span> · 제28회 CHTF 2026 종일 관람 + 심천 시티 동선</p>
+                        <p><span class="text-tm font-bold">항공</span> · 대한항공 직항 KE835 / KE836 (인천 ↔ 심천 보안)</p>
+                        <p><span class="text-tm font-bold">숙박</span> · BHD HOTEL(宝亨达) 또는 동급 · 2인1실 3박</p>
+                        <p><span class="text-tm font-bold">인원</span> · 20명 단독 · 10트윈 · 45인승 전용차량</p>
+                        <p class="sm:col-span-2"><span class="text-tm font-bold">관전 포인트</span> · AI·로봇 · 드론 · 자율주행 · 반도체 · IT/빅데이터 · 첨단의료 · 청정에너지</p>
+                        <p class="sm:col-span-2"><span class="text-tm font-bold">포함</span> · 지상비 $500/인 (호텔·버스·입장료·식사·가이드·가이드팁)</p>
                     </div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-4">
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                        <h4 class="font-bold text-sky-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-city"></i> 1일차 · OCT · 핑안 · 동문</h4>
+                    <div class="hl-card tm-soft p-6">
+                        <h4 class="font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-city"></i> 1일차 · OCT · 핑안 · 동문</h4>
                         <p class="text-slate-600 text-sm leading-relaxed">도착 후 <strong>OCT Harbour</strong>, <strong>핑안빌딩 116층 전망대</strong>, 동문 야시장, 발+전신마사지 90분으로 ‘아시아 실리콘밸리’의 스카이라인부터 체감합니다.</p>
                     </div>
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                        <h4 class="font-bold text-violet-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip"></i> 2일차 · 제28회 CHTF 2026</h4>
+                    <div class="hl-card tm-soft p-6">
+                        <h4 class="font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip"></i> 2일차 · 제28회 CHTF 2026</h4>
                         <p class="text-slate-600 text-sm leading-relaxed">보안 <strong>Shenzhen World Exhibition &amp; Convention Center</strong>에서 AI·로봇·드론·자율주행을 중심으로 하이테크 전시를 종일 둘러봅니다.</p>
                     </div>
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                        <h4 class="font-bold text-tm mb-3 flex items-center gap-2"><i class="fa-solid fa-landmark"></i> 3일차 · 객가 · 베이공원 · 세계창</h4>
+                    <div class="hl-card tm-soft p-6">
+                        <h4 class="font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-landmark"></i> 3일차 · 객가 · 베이공원 · 세계창</h4>
                         <p class="text-slate-600 text-sm leading-relaxed"><strong>간구 객가마을</strong>, 심천베이공원(무인커피·드론배달), <strong>세계창</strong>·소수민족촌·쇼로 기술 도시와 문화 도시를 하루 안에 담습니다.</p>
                     </div>
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                        <h4 class="font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-list"></i> 출국 전 준비 포인트</h4>
+                    <div class="hl-card tm-soft p-6">
+                        <h4 class="font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-list"></i> 출국 전 준비 포인트</h4>
                         <p class="text-slate-600 text-sm leading-relaxed">중국 비자·전자 입국신고서 QR · 대한항공 온라인 체크인 · 알리페이 사전 등록 · 박람회용 명함. 세부 절차는 아래 항공·입국·준비물 섹션을 확인하세요.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="flight" class="py-16 bg-white border-t border-slate-200">
+        <section id="flight" class="py-16 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10">
-                    <span class="text-tm font-black tracking-widest text-xs uppercase">FLIGHT &amp; AIRPORT</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">항공 스케줄 및 공항 안내</h2>
-                    <p class="text-sm text-slate-500 mt-2">대한항공 인천 ↔ 심천(보안). 출국·귀국 모두 대한항공 직항입니다.</p>
+                    <span class="section-eyebrow">FLIGHT &amp; AIRPORT</span>
+                    <h2 class="section-title">항공 스케줄 및 공항 안내</h2>
+                    <p class="section-sub">대한항공 인천 ↔ 심천(보안). 출국·귀국 모두 대한항공 직항입니다.</p>
                 </div>
                 <div class="max-w-4xl mx-auto mb-10">
-                    <div class="bg-white rounded-2xl border border-blue-100 shadow-md p-6">
+                    <div class="tm-panel p-6 md:p-8">
                         <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
                             <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 w-full md:w-1/2 text-center">
                                 <span class="text-xs bg-tm text-white px-3 py-1 rounded-full font-bold mb-3 inline-block">출국 11.25(수)</span>
@@ -446,32 +456,32 @@
                     </div>
                 </div>
                 <div class="max-w-4xl mx-auto mb-8">
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-md p-6 md:p-8">
+                    <div class="tm-panel p-6 md:p-8">
                         <h3 class="font-bold text-slate-800 text-lg mb-6 flex items-center gap-2">
-                            <i class="fa-solid fa-building-user text-green-600"></i> 인천국제공항 출국 순서
+                            <i class="fa-solid fa-building-user text-tm"></i> 인천국제공항 출국 순서
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
-                            <div class="bg-green-50 rounded-xl p-4 border border-green-100 relative">
-                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">1</div>
-                                <div class="mb-2"><i class="fa-solid fa-clock text-2xl text-green-600"></i></div>
+                            <div class="tm-soft p-4 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-tm text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">1</div>
+                                <div class="mb-2"><i class="fa-solid fa-clock text-2xl text-tm"></i></div>
                                 <h4 class="font-bold text-slate-800 text-sm">출발 2시간 30분 전</h4>
                                 <p class="text-xs text-slate-600 mt-1">단체 수속·위탁수하물을 위해<br>인천공항 카운터에 모입니다.</p>
                             </div>
-                            <div class="bg-green-50 rounded-xl p-4 border border-green-100 relative">
-                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">2</div>
-                                <div class="mb-2"><i class="fa-solid fa-passport text-2xl text-green-600"></i></div>
+                            <div class="tm-soft p-4 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-tm text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">2</div>
+                                <div class="mb-2"><i class="fa-solid fa-passport text-2xl text-tm"></i></div>
                                 <h4 class="font-bold text-slate-800 text-sm">보안검색 · 출국심사</h4>
                                 <p class="text-xs text-slate-600 mt-1">100ml 초과 액체류 금지.<br>여권은 목에 걸고 이동합니다.</p>
                             </div>
-                            <div class="bg-green-50 rounded-xl p-4 border border-green-100 relative">
-                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">3</div>
-                                <div class="mb-2"><i class="fa-solid fa-door-open text-2xl text-green-600"></i></div>
+                            <div class="tm-soft p-4 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-tm text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">3</div>
+                                <div class="mb-2"><i class="fa-solid fa-door-open text-2xl text-tm"></i></div>
                                 <h4 class="font-bold text-slate-800 text-sm">탑승 게이트</h4>
                                 <p class="text-xs text-slate-600 mt-1"><span class="text-red-600 font-bold">출발 30분 전 마감</span><br>게이트에서 인원 확인.</p>
                             </div>
-                            <div class="bg-green-50 rounded-xl p-4 border border-green-100 relative">
-                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">4</div>
-                                <div class="mb-2"><i class="fa-solid fa-plane-arrival text-2xl text-green-600"></i></div>
+                            <div class="tm-soft p-4 relative">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-tm text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shadow-md">4</div>
+                                <div class="mb-2"><i class="fa-solid fa-plane-arrival text-2xl text-tm"></i></div>
                                 <h4 class="font-bold text-slate-800 text-sm">심천 도착 · 미팅</h4>
                                 <p class="text-xs text-slate-600 mt-1">입국 심사 후<br>가이드와 미팅합니다.</p>
                             </div>
@@ -553,16 +563,16 @@
                     </div>
                 </div>
 
-                <div class="max-w-4xl mx-auto mb-8 bg-slate-900 rounded-3xl shadow-md border border-slate-700 p-6">
-                    <h3 class="text-white font-bold text-lg border-b border-slate-700 pb-3 mb-4"><i class="fa-solid fa-wifi mr-2 text-sky-400"></i>통신 · 결제 참고</h3>
+                <div class="max-w-4xl mx-auto mb-8 tm-panel p-6 md:p-8">
+                    <h3 class="text-slate-800 font-bold text-lg border-b border-slate-100 pb-3 mb-4"><i class="fa-solid fa-wifi mr-2 text-tm"></i>통신 · 결제 참고</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                            <p class="font-bold text-red-400 text-sm mb-1">카카오톡 / 유튜브 제한</p>
-                            <p class="text-sm text-slate-300 leading-relaxed">현지 와이파이로는 카카오톡·구글 등이 제한될 수 있습니다. 로밍·유심은 개인 선택이며, 단체 연락은 현지 가이드·코디 채널을 우선합니다.</p>
+                        <div class="tm-soft p-4">
+                            <p class="font-bold text-tm text-sm mb-1">카카오톡 / 유튜브 제한</p>
+                            <p class="text-sm text-slate-600 leading-relaxed">현지 와이파이로는 카카오톡·구글 등이 제한될 수 있습니다. 로밍·유심은 개인 선택이며, 단체 연락은 현지 가이드·코디 채널을 우선합니다.</p>
                         </div>
-                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                            <p class="font-bold text-sky-300 text-sm mb-1">알리페이(Alipay)</p>
-                            <p class="text-sm text-slate-300 leading-relaxed">간식·소액 결제에 편합니다. 한국에서 미리 앱을 받아 카드 등록해 두면 좋아요. (단체 식사는 별도 안내)</p>
+                        <div class="tm-soft p-4">
+                            <p class="font-bold text-tm text-sm mb-1">알리페이(Alipay)</p>
+                            <p class="text-sm text-slate-600 leading-relaxed">간식·소액 결제에 편합니다. 한국에서 미리 앱을 받아 카드 등록해 두면 좋아요. (단체 식사는 별도 안내)</p>
                         </div>
                     </div>
                 </div>
@@ -580,27 +590,27 @@
         </section>
 
 
-        <section id="seat-checkin" class="py-16 bg-sky-50/70 border-t border-sky-100">
+        <section id="seat-checkin" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-4xl">
                 <div class="text-center mb-8">
-                    <span class="inline-block bg-tm text-white text-xs px-3 py-1 rounded-full font-bold shadow-sm mb-3">KOREAN AIR · CHECK-IN</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800">대한항공 온라인 체크인 · 좌석 안내</h2>
-                    <p class="text-slate-600 mt-2 text-sm">항공권 <strong>발권(E-티켓 발행) 완료 후</strong> 온라인 체크인으로 무료 좌석을 받고, 공항에서는 일행 여권을 함께 제시해 주세요.</p>
+                    <span class="section-eyebrow">KOREAN AIR · CHECK-IN</span>
+                    <h2 class="section-title">대한항공 온라인 체크인 · 좌석 안내</h2>
+                    <p class="section-sub">항공권 <strong>발권(E-티켓 발행) 완료 후</strong> 온라인 체크인으로 무료 좌석을 받고, 공항에서는 일행 여권을 함께 제시해 주세요.</p>
                 </div>
 
-                <div class="bg-white rounded-3xl shadow-md border border-sky-100 p-6 md:p-8 mb-5">
+                <div class="tm-panel p-6 md:p-8 mb-5">
                     <div class="grid sm:grid-cols-3 gap-3 mb-5">
                         <div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-4 text-center">
                             <p class="font-bold text-slate-800 text-sm">온라인 체크인 · 무료 좌석</p>
-                            <span class="inline-block text-[11px] font-bold text-emerald-700 bg-white px-2.5 py-0.5 rounded-full border border-emerald-200 mt-1">출발 48시간 ~ 1시간 전</span>
+                            <span class="inline-block text-[11px] font-bold text-tm bg-white px-2.5 py-0.5 rounded-full border border-blue-200 mt-1">출발 48시간 ~ 1시간 전</span>
                         </div>
                         <div class="rounded-2xl bg-sky-50 border border-sky-100 p-4 text-center">
                             <p class="font-bold text-slate-800 text-sm">인천 T2 단체 수속</p>
-                            <span class="inline-block text-[11px] font-bold text-sky-700 bg-white px-2.5 py-0.5 rounded-full border border-sky-200 mt-1">출발 2시간 30분 전 권장</span>
+                            <span class="inline-block text-[11px] font-bold text-tm bg-white px-2.5 py-0.5 rounded-full border border-blue-200 mt-1">출발 2시간 30분 전 권장</span>
                         </div>
                         <div class="rounded-2xl bg-amber-50 border border-amber-100 p-4 text-center">
                             <p class="font-bold text-slate-800 text-sm">심천 도착 · 가이드 미팅</p>
-                            <span class="inline-block text-[11px] font-bold text-amber-700 bg-white px-2.5 py-0.5 rounded-full border border-amber-200 mt-1">입국 후 미팅</span>
+                            <span class="inline-block text-[11px] font-bold text-tm bg-white px-2.5 py-0.5 rounded-full border border-blue-200 mt-1">입국 후 미팅</span>
                         </div>
                     </div>
                     <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 text-xs text-slate-600 space-y-2 mb-4">
@@ -668,11 +678,12 @@
             </div>
         </section>
 
-        <section id="map-section" class="py-16 bg-white border-t border-slate-200">
+        <section id="map-section" class="py-16 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-7xl">
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-slate-800">한눈에 보는 동선 지도</h2>
-                    <p class="text-sm text-slate-500 mt-2">도로 이동은 실제 경로를 따라 그려집니다. 항공 구간만 점선입니다.</p>
+                    <span class="section-eyebrow">ROUTE MAP</span>
+                    <h2 class="section-title">한눈에 보는 동선 지도</h2>
+                    <p class="section-sub">도로 이동은 실제 경로를 따라 그려집니다. 항공 구간만 점선입니다.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 justify-center mb-6">
                     <button onclick="changeMapAndTab('all')" class="map-tab-btn active px-5 py-2 rounded-full text-sm font-bold border bg-tm text-white border-tm shadow-sm">전체</button>
@@ -699,13 +710,13 @@
             </div>
         </section>
 
-        <section id="schedule" class="py-16 bg-slate-50 border-t border-slate-200">
+        <section id="schedule" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-6xl">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
                     <div>
-                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-bold mb-2">OFFICIAL ITINERARY</span>
-                        <h2 class="text-3xl font-bold text-slate-800">일자별 상세 일정</h2>
-                        <p class="text-slate-500 text-sm mt-1">탭을 눌러 일자별 상세 내용을 확인하세요. (※ 항공 및 현지 사정에 의해 변동될 수 있습니다)</p>
+                        <span class="section-eyebrow">ITINERARY</span>
+                        <h2 class="section-title">일자별 상세 일정</h2>
+                        <p class="section-sub">탭을 눌러 일자별 상세 내용을 확인하세요. (※ 항공 및 현지 사정에 의해 변동될 수 있습니다)</p>
                     </div>
                     <div class="text-center sm:text-right shrink-0 no-print">
                         <button type="button" onclick="handlePrint()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-tm hover:bg-tm-dark text-white text-sm font-bold rounded-xl shadow-sm transition-colors" title="일정표 인쇄하기">
@@ -714,7 +725,7 @@
                         <p class="md:hidden mt-2 text-xs text-slate-500 leading-relaxed max-w-[16rem] mx-auto sm:ml-auto sm:mr-0">모바일(카카오톡 등)에서는<br>인쇄가 어려울 수 있어요.<br>다른 브라우저나 PC에서 열어 주세요.</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="tm-panel overflow-hidden">
                     <div class="flex flex-wrap border-b bg-slate-50 overflow-x-auto no-scrollbar">
                         <button onclick="changeMapAndTab('day1')" class="sched-tab flex-1 min-w-[100px] py-4 font-bold text-sm text-tm border-b-2 border-tm">1일차 (11/25)</button>
                         <button onclick="changeMapAndTab('day2')" class="sched-tab flex-1 min-w-[100px] py-4 font-bold text-sm text-slate-500">2일차 (11/26)</button>
@@ -752,7 +763,7 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="timeline-dot bg-indigo-600 ring-indigo-100"></div>
+                                <div class="timeline-dot bg-tm ring-blue-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">핑안빌딩 116층 전망대</h4>
@@ -762,7 +773,7 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="timeline-dot bg-rose-500 ring-rose-100"></div>
+                                <div class="timeline-dot bg-sky-500 ring-sky-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">심천 야시장 (동문)</h4>
@@ -772,7 +783,7 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="timeline-dot bg-emerald-500 ring-emerald-100"></div>
+                                <div class="timeline-dot bg-slate-400 ring-slate-100"></div>
                                 <h4 class="font-bold text-lg text-slate-800">발+전신마사지 90분</h4>
                                 <p class="text-sm text-slate-500 mt-1">팁 포함 · 이후 호텔 체크인</p>
                             </div>
@@ -799,7 +810,7 @@
                         </div>
                         <div class="relative border-l-2 border-slate-200 ml-4 pl-6 space-y-7">
                             <div class="relative">
-                                <div class="timeline-dot bg-violet-600 ring-violet-100"></div>
+                                <div class="timeline-dot bg-tm ring-blue-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">제28회 China High-Tech Fair (CHTF 2026)</h4>
@@ -809,7 +820,7 @@
                                             <li>관람 팁: 전시 구역을 나눠 걷고, 관심 분야 부스에서 데모·명함을 챙기세요</li>
                                             <li>입장권: 사전신청 무료 / 당일발권 120위엔 · 통역 포함 시 $80 추가</li>
                                         </ul>
-                                        <div class="mt-3 bg-violet-50 border border-violet-100 rounded-xl p-3 text-xs text-violet-900 leading-relaxed">
+                                        <div class="mt-3 bg-blue-50 border border-blue-100 rounded-xl p-3 text-xs text-slate-700 leading-relaxed">
                                             심천은 AI·로봇·드론·자율주행이 빠르게 상용화되는 도시입니다. 박람회에서는 ‘제품 스펙’보다 <strong>현장 적용·비즈니스 모델</strong>을 중심으로 살펴보시면 좋습니다.
                                         </div>
                                     </div>
@@ -838,7 +849,7 @@
                         </div>
                         <div class="relative border-l-2 border-slate-200 ml-4 pl-6 space-y-7">
                             <div class="relative">
-                                <div class="timeline-dot bg-amber-700 ring-amber-100"></div>
+                                <div class="timeline-dot bg-amber-500 ring-amber-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">간구 객가마을</h4>
@@ -848,7 +859,7 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="timeline-dot bg-cyan-500 ring-cyan-100"></div>
+                                <div class="timeline-dot bg-amber-500 ring-amber-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">심천베이공원</h4>
@@ -861,7 +872,7 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="timeline-dot bg-rose-500 ring-rose-100"></div>
+                                <div class="timeline-dot bg-sky-500 ring-sky-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">세계창 (Window of the World)</h4>
@@ -871,7 +882,7 @@
                                 </div>
                             </div>
                             <div class="relative">
-                                <div class="timeline-dot bg-orange-500 ring-orange-100"></div>
+                                <div class="timeline-dot bg-amber-500 ring-amber-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
                                         <h4 class="font-bold text-lg text-slate-800">소수민족촌 · 소수민족쇼</h4>
@@ -917,12 +928,12 @@
             </div>
         </section>
 
-        <section id="places" class="py-16 bg-white border-t border-slate-200">
+        <section id="places" class="py-16 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10">
-                    <span class="text-tm font-black tracking-widest text-xs uppercase">PLACES</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">방문지 미리보기</h2>
-                    <p class="text-sm text-slate-500 mt-2">일정에 포함된 주요 방문지를 미리 살펴보세요.</p>
+                    <span class="section-eyebrow">PLACES</span>
+                    <h2 class="section-title">방문지 미리보기</h2>
+                    <p class="section-sub">일정에 포함된 주요 방문지를 미리 살펴보세요.</p>
                 </div>
                 <div class="space-y-5">
                     <article class="border border-slate-200 rounded-3xl p-5 md:p-6 bg-slate-50/80">
@@ -982,8 +993,8 @@
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10">
                     <span class="text-slate-600 font-black tracking-widest text-xs uppercase">ACCOMMODATION</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">심천 BHD HOTEL</h2>
-                    <p class="text-sm text-slate-500 mt-2">宝亨达国际酒店 · 또는 동급 · 전 일정 3박</p>
+                    <h2 class="section-title">심천 BHD HOTEL</h2>
+                    <p class="section-sub">宝亨达国际酒店 · 또는 동급 · 전 일정 3박</p>
                 </div>
                 <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
                     <img src="assets/images/hotel.jpg" alt="심천 BHD International Hotel 외관" class="w-full h-56 md:h-72 object-cover object-center">
@@ -1014,7 +1025,7 @@
             </div>
         </section>
 
-        <section id="video" class="py-16 bg-slate-900 border-t border-slate-800">
+        <section id="video" class="py-16 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10 text-white">
                     <span class="inline-block bg-white/15 text-white text-xs px-3 py-1 rounded-full font-bold mb-3 border border-white/30">OFFICIAL PREVIEW</span>
@@ -1040,7 +1051,7 @@
             </div>
         </section>
 
-        <section id="smart-info" class="py-16 bg-slate-900 text-white border-t border-slate-800">
+        <section id="smart-info" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10">
                     <span class="text-sky-300 font-black tracking-widest text-xs uppercase">TRAVEL ASSISTANT</span>
@@ -1078,12 +1089,12 @@
             </div>
         </section>
 
-        <section id="chinese" class="py-16 bg-amber-50 border-t border-amber-100">
+        <section id="chinese" class="py-16 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-10">
                     <span class="text-amber-700 font-black tracking-widest text-xs uppercase">CHINESE PHRASES</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">중국어 간단 회화</h2>
-                    <p class="text-sm text-slate-500 mt-2">성인 단체용 핵심 표현만 모았습니다. 카드를 누르면 크게 볼 수 있습니다.</p>
+                    <h2 class="section-title">중국어 간단 회화</h2>
+                    <p class="section-sub">성인 단체용 핵심 표현만 모았습니다. 카드를 누르면 크게 볼 수 있습니다.</p>
                 </div>
                 <div id="phrase-sections" class="space-y-8"></div>
                 <div id="phrase-focus" class="hidden mt-8 bg-white border-2 border-tm rounded-3xl p-6 md:p-8 text-center shadow-lg">
@@ -1096,12 +1107,12 @@
             </div>
         </section>
 
-        <section id="check" class="py-16 bg-white border-t border-slate-100">
+        <section id="check" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-10">
                     <span class="text-tm font-black tracking-widest text-xs uppercase">PREPARATION</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">준비물 체크리스트 &amp; 메모</h2>
-                    <p class="text-sm text-slate-500 mt-2">잊지 말고 꼭 챙기세요! (작성 내용은 스마트폰에 자동 저장됩니다)</p>
+                    <h2 class="section-title">준비물 체크리스트 &amp; 메모</h2>
+                    <p class="section-sub">잊지 말고 꼭 챙기세요! (작성 내용은 스마트폰에 자동 저장됩니다)</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm">
@@ -1120,22 +1131,22 @@
             </div>
         </section>
 
-        <section id="contact" class="py-16 bg-white border-t border-slate-200">
+        <section id="contact" class="py-16 bg-slate-50 border-t border-slate-200">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-10">
                     <span class="text-red-600 font-black tracking-widest text-xs uppercase">EMERGENCY</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">비상 연락망</h2>
-                    <p class="text-sm text-slate-500 mt-2">위급 상황 시 아래 번호로 연락해 주시기 바랍니다.</p>
+                    <h2 class="section-title">비상 연락망</h2>
+                    <p class="section-sub">위급 상황 시 아래 번호로 연락해 주시기 바랍니다.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm text-center tm-panel relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-tm"></div>
                         <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-4 mx-auto"><i class="fa-solid fa-headset text-tm text-2xl"></i></div>
                         <span class="text-xs text-slate-400 font-bold mb-1 block">한국총괄</span>
                         <h4 class="font-bold text-slate-800 text-xl mb-2">투어메이커</h4>
                         <p class="text-sm text-slate-600">대표 이재명 : <a href="tel:010-9443-7881" class="text-tm font-bold">010-9443-7881</a></p>
                     </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm text-center tm-panel relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500"></div>
                         <div class="w-14 h-14 bg-indigo-50 rounded-full flex items-center justify-center mb-4 mx-auto"><i class="fa-solid fa-flag text-indigo-600 text-2xl"></i></div>
                         <span class="text-xs text-slate-400 font-bold mb-1 block">현지 동행</span>
@@ -1143,7 +1154,7 @@
                         <p class="text-sm text-slate-600">현지 가이드 · 미정</p>
                         <p class="text-xs text-slate-500 mt-2">연락처는 출국 전 별도 안내</p>
                     </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm text-center tm-panel relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-emerald-500"></div>
                         <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center mb-4 mx-auto"><i class="fa-solid fa-building-flag text-emerald-600 text-2xl"></i></div>
                         <span class="text-xs text-slate-400 font-bold mb-1 block">긴급 영사 보호</span>
@@ -1151,7 +1162,7 @@
                         <p class="text-sm text-slate-600"><a href="tel:+862029192999" class="text-emerald-700 font-bold">+86-20-2919-2999</a></p>
                         <p class="text-xs text-slate-500 mt-2">심천·광둥 권역</p>
                     </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm text-center tm-panel relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
                         <div class="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center mb-4 mx-auto"><i class="fa-solid fa-phone text-red-600 text-2xl"></i></div>
                         <span class="text-xs text-slate-400 font-bold mb-1 block">영사콜센터</span>
