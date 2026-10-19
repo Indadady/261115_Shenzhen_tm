@@ -40,7 +40,22 @@
         #map-wrap { position: relative; }
         #map { height: 360px; width: 100%; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1); z-index: 10; }
         @media(min-width:1024px) { #map { height: 500px; } }
-        #map-leg { position: absolute; top: 12px; left: 12px; z-index: 500; display: none; background: rgba(255,255,255,.94); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 800; color: var(--tm); box-shadow: 0 4px 12px rgba(15,23,42,.12); pointer-events: none; max-width: calc(100% - 24px); }
+        #map-distance {
+            position: absolute; top: 12px; right: 12px; z-index: 500; display: none;
+            background: rgba(255,255,255,.96); border-radius: 14px; padding: 10px 12px;
+            box-shadow: 0 8px 20px rgba(15,23,42,.14); pointer-events: none; min-width: 8.5rem; max-width: calc(100% - 24px);
+        }
+        @media(max-width:640px) { #map-distance { min-width: 7rem; padding: 8px 10px; } }
+        #map-distance-time { white-space: pre-line; }
+        .map-zoom-btns {
+            position: absolute; left: 12px; bottom: 12px; z-index: 500; display: flex; flex-direction: column; gap: 6px;
+        }
+        .map-zoom-btns button {
+            width: 36px; height: 36px; border: none; border-radius: 10px; background: rgba(255,255,255,.96);
+            color: var(--tm); font-size: 18px; font-weight: 800; box-shadow: 0 4px 12px rgba(15,23,42,.16); line-height: 1;
+        }
+        .map-zoom-btns button:active { transform: scale(.96); }
+        .leaflet-control-zoom { display: none !important; }
         .map-vehicle { font-size: 26px; line-height: 1; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
         .traveler-icon { background: none !important; border: none !important; }
         .map-marker-bubble { background: #fff; border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,.3); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; opacity: 0; }
@@ -131,6 +146,7 @@
                     <a href="#home" class="px-3 py-2 font-bold text-slate-600 hover:text-tm rounded-lg">홈</a>
                     <a href="#highlights" class="px-3 py-2 font-bold text-tm rounded-lg">핵심포인트</a>
                     <a href="#flight" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">항공</a>
+                    <a href="#seat-checkin" class="px-3 py-2 font-bold text-sky-700 hover:bg-sky-50 rounded-lg">좌석·체크인</a>
                     <a href="#arrival-card" class="px-3 py-2 font-bold text-amber-700 hover:text-amber-900 rounded-lg">입국심사</a>
                     <a href="#map-section" class="px-3 py-2 font-medium text-slate-600 hover:text-tm rounded-lg">동선</a>
                     <a href="#schedule" class="px-3 py-2 font-bold text-tm rounded-lg">상세일정</a>
@@ -213,8 +229,8 @@
                             <td class="col-desc">
                                 <div class="time-flow">호텔 조식 후 이동</div>
                                 <ul class="desc-list">
-                                    <li><span class="highlight">China High-Tech Fair</span> · Shenzhen World Exhibition &amp; Convention Center
-                                        <span class="desc-note">AI·로봇, 반도체, IT/빅데이터, 첨단의료, 청정에너지, 고급기계 등 하이테크 전시 관람</span>
+                                    <li><span class="highlight">제28회 China High-Tech Fair (CHTF 2026)</span> · Shenzhen World Exhibition &amp; Convention Center
+                                        <span class="desc-note">AI·로봇·드론·자율주행, 반도체, IT/빅데이터, 첨단의료, 청정에너지, 고급기계 등 하이테크 전시 관람</span>
                                     </li>
                                     <li>입장권 안내
                                         <span class="desc-note">사전신청 무료 / 당일발권 120위엔 · 통역 포함 시 $80 추가</span>
@@ -311,6 +327,18 @@
                     <div class="print-check-item"><span class="print-check-box"></span><span>명함·명찰 (박람회 네트워킹용)</span></div>
                     <div class="print-check-item"><span class="print-check-box"></span><span>비상연락처 메모</span></div>
                 </div>
+                <p class="print-section-title">대한항공 온라인 체크인 · 보조배터리</p>
+                <div class="print-check-grid" style="grid-template-columns:1fr; margin-bottom:12px;">
+                    <div class="print-check-item" style="align-items:flex-start;">
+                        <span class="print-check-box" style="margin-top:2px;"></span>
+                        <span>
+                            <strong>온라인 체크인 · 무료 좌석배정</strong> (항공권 발권(E-티켓 발행) 완료 후 · 출발 48시간~1시간 전)<br>
+                            가는 편 KE835 · 11/23 08:15 오픈 · 오는 편 KE836 · 11/26 12:40 오픈<br>
+                            미진행 시 공항 카운터에서 일행 여권 함께 제시하면 인접 좌석 배정에 도움이 됩니다.<br>
+                            <strong>[필수] 보조배터리·전자담배</strong> — 위탁 금지 · 기내 사용·충전 금지 · 선반 보관 불가 · 단락 방지 · 1인 최대 2개 · 160Wh 초과 불가
+                        </span>
+                    </div>
+                </div>
                 <div class="print-qr-panel">
                     <img src="assets/images/guidebook-qr.png" alt="스마트 가이드북 QR코드" width="120" height="120">
                     <div>
@@ -334,7 +362,7 @@
                     <i class="fa-solid fa-plane-departure mr-2"></i>투어메이커 스마트 가이드북
                 </span>
                 <h1 class="font-['Nanum_Myeongjo'] text-3xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">심천 3박 4일<br><span class="text-sky-200">하이테크 박람회 · 시티투어</span></h1>
-                <p class="mt-4 text-base md:text-lg text-slate-100 max-w-xl mx-auto leading-relaxed">인천출발 단독 20명 · China High-Tech Fair<br>핑안전망대 · 세계창 · 객가마을</p>
+                <p class="mt-4 text-base md:text-lg text-slate-100 max-w-xl mx-auto leading-relaxed">아시아의 실리콘밸리 · 제28회 CHTF 2026<br>핑안전망대 · 세계창 · 객가마을 · 단독 20명</p>
                 <div class="bg-black/40 backdrop-blur-sm inline-block px-8 py-3 rounded-2xl mt-6 border border-white/20">
                     <p id="hero-date" class="text-sm md:text-base text-white font-bold">2026.11.25 (수) ~ 11.28 (토) · 3박 4일</p>
                     <p class="text-xs md:text-sm text-blue-100 font-medium mt-1">대한항공 KE835 / KE836 · 인천 ↔ 심천(보안)</p>
@@ -349,26 +377,41 @@
         <section id="highlights" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-10">
-                    <span class="text-tm font-black tracking-widest text-xs uppercase">HIGHLIGHTS</span>
-                    <h2 class="text-3xl font-bold text-slate-800 mt-2">이번 여정의 핵심</h2>
-                    <p class="text-sm text-slate-500 mt-2">하이테크 박람회와 심천 대표 시티 동선을 전용버스로 연결합니다.</p>
+                    <span class="text-tm font-black tracking-widest text-xs uppercase">OVERVIEW</span>
+                    <h2 class="text-3xl font-bold text-slate-800 mt-2">한눈에 보는 심천 하이테크 여정</h2>
+                    <p class="text-sm text-slate-500 mt-2">AI·로봇·드론·자율주행이 가장 먼저 상용화되는 도시, 심천에서 박람회와 시티를 하루 리듬으로 연결합니다.</p>
                 </div>
+
+                <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 mb-8 shadow-lg border border-slate-700">
+                    <p class="text-[11px] font-extrabold tracking-[0.2em] text-sky-300 mb-4">HITECH FAIR · CITY INSIGHT</p>
+                    <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm leading-relaxed">
+                        <p><span class="text-sky-300 font-bold">행사</span> · 심천 하이테크 박람회 3박 4일 (시티투어 포함)</p>
+                        <p><span class="text-sky-300 font-bold">일정</span> · 2026.11.25(수) ~ 11.28(토)</p>
+                        <p><span class="text-sky-300 font-bold">핵심</span> · 제28회 CHTF 2026 종일 관람 + 심천 시티 동선</p>
+                        <p><span class="text-sky-300 font-bold">항공</span> · 대한항공 직항 KE835 / KE836 (인천 ↔ 심천 보안)</p>
+                        <p><span class="text-sky-300 font-bold">숙박</span> · BHD HOTEL(宝亨达) 또는 동급 · 2인1실 3박</p>
+                        <p><span class="text-sky-300 font-bold">인원</span> · 20명 단독 · 10트윈 · 45인승 전용차량</p>
+                        <p class="sm:col-span-2"><span class="text-sky-300 font-bold">관전 포인트</span> · AI·로봇 · 드론 · 자율주행 · 반도체 · IT/빅데이터 · 첨단의료 · 청정에너지</p>
+                        <p class="sm:col-span-2"><span class="text-sky-300 font-bold">포함</span> · 지상비 $500/인 (호텔·버스·입장료·식사·가이드·가이드팁)</p>
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
                         <h4 class="font-bold text-sky-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-city"></i> 1일차 · OCT · 핑안 · 동문</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">도착 후 <strong>OCT Harbour</strong>, <strong>핑안빌딩 116층 전망대</strong>, 동문 야시장, 발+전신마사지 90분으로 심천의 첫날을 채웁니다.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">도착 후 <strong>OCT Harbour</strong>, <strong>핑안빌딩 116층 전망대</strong>, 동문 야시장, 발+전신마사지 90분으로 ‘아시아 실리콘밸리’의 스카이라인부터 체감합니다.</p>
                     </div>
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                        <h4 class="font-bold text-violet-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip"></i> 2일차 · China High-Tech Fair</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">보안의 <strong>Shenzhen World Exhibition &amp; Convention Center</strong>에서 AI·로봇·반도체·IT·첨단의료·청정에너지·고급기계 전시를 둘러봅니다.</p>
+                        <h4 class="font-bold text-violet-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-microchip"></i> 2일차 · 제28회 CHTF 2026</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">보안 <strong>Shenzhen World Exhibition &amp; Convention Center</strong>에서 AI·로봇·드론·자율주행을 중심으로 하이테크 전시를 종일 둘러봅니다.</p>
                     </div>
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
                         <h4 class="font-bold text-tm mb-3 flex items-center gap-2"><i class="fa-solid fa-landmark"></i> 3일차 · 객가 · 베이공원 · 세계창</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed"><strong>간구 객가마을</strong>, 심천베이공원(무인커피·드론배달), <strong>세계창</strong>·소수민족촌·쇼로 하루를 보냅니다.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed"><strong>간구 객가마을</strong>, 심천베이공원(무인커피·드론배달), <strong>세계창</strong>·소수민족촌·쇼로 기술 도시와 문화 도시를 하루 안에 담습니다.</p>
                     </div>
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                        <h4 class="font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-plane"></i> 지상비 · 포함사항</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">지상비 <strong>$500/인</strong> · 호텔(2인1실)·전용버스·입장료·식사·가이드·가이드팁 포함. 20명 단독 · 10트윈 · 45인승 일반차량.</p>
+                        <h4 class="font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-clipboard-list"></i> 출국 전 준비 포인트</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">중국 비자·전자 입국신고서 QR · 대한항공 온라인 체크인 · 알리페이 사전 등록 · 박람회용 명함. 세부 절차는 아래 항공·입국·준비물 섹션을 확인하세요.</p>
                     </div>
                 </div>
             </div>
@@ -536,6 +579,95 @@
             </div>
         </section>
 
+
+        <section id="seat-checkin" class="py-16 bg-sky-50/70 border-t border-sky-100">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <div class="text-center mb-8">
+                    <span class="inline-block bg-tm text-white text-xs px-3 py-1 rounded-full font-bold shadow-sm mb-3">KOREAN AIR · CHECK-IN</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800">대한항공 온라인 체크인 · 좌석 안내</h2>
+                    <p class="text-slate-600 mt-2 text-sm">항공권 <strong>발권(E-티켓 발행) 완료 후</strong> 온라인 체크인으로 무료 좌석을 받고, 공항에서는 일행 여권을 함께 제시해 주세요.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl shadow-md border border-sky-100 p-6 md:p-8 mb-5">
+                    <div class="grid sm:grid-cols-3 gap-3 mb-5">
+                        <div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-4 text-center">
+                            <p class="font-bold text-slate-800 text-sm">온라인 체크인 · 무료 좌석</p>
+                            <span class="inline-block text-[11px] font-bold text-emerald-700 bg-white px-2.5 py-0.5 rounded-full border border-emerald-200 mt-1">출발 48시간 ~ 1시간 전</span>
+                        </div>
+                        <div class="rounded-2xl bg-sky-50 border border-sky-100 p-4 text-center">
+                            <p class="font-bold text-slate-800 text-sm">인천 T2 단체 수속</p>
+                            <span class="inline-block text-[11px] font-bold text-sky-700 bg-white px-2.5 py-0.5 rounded-full border border-sky-200 mt-1">출발 2시간 30분 전 권장</span>
+                        </div>
+                        <div class="rounded-2xl bg-amber-50 border border-amber-100 p-4 text-center">
+                            <p class="font-bold text-slate-800 text-sm">심천 도착 · 가이드 미팅</p>
+                            <span class="inline-block text-[11px] font-bold text-amber-700 bg-white px-2.5 py-0.5 rounded-full border border-amber-200 mt-1">입국 후 미팅</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 text-xs text-slate-600 space-y-2 mb-4">
+                        <p><strong class="text-tm">가는 편 KE835</strong> · 온라인 체크인
+                            <span class="inline-block mt-1 bg-white border border-slate-200 text-tm font-bold px-2 py-0.5 rounded-full">11/23(월) 08:15 오픈 ~ 11/25 07:15 마감 · 인천 T2</span>
+                        </p>
+                        <p><strong class="text-tm">오는 편 KE836</strong> · 온라인 체크인
+                            <span class="inline-block mt-1 bg-white border border-slate-200 text-tm font-bold px-2 py-0.5 rounded-full">11/26(목) 12:40 오픈 ~ 11/28 11:40 마감 · 심천 보안</span>
+                        </p>
+                        <p class="text-slate-500">위탁 수하물 기준은 항공권·운임 조건에 따릅니다. 미리 체크인하지 않아도 카운터에서 <strong>일행 여권을 함께 제시</strong>하면 인접 좌석 배정에 도움이 됩니다.</p>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-3.5 text-xs text-blue-900 mb-5 leading-relaxed">
+                        심천 보안공항 도착 후 입국 심사를 마치고 가이드와 미팅합니다. 단체 연락은 현지 가이드·코디 채널을 우선해 주세요.
+                    </div>
+                    <a href="https://www.koreanair.com/kr/ko/airport/check-in/online-check-in" target="_blank" rel="noopener" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-tm hover:bg-tm-dark text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition text-sm">
+                        <i class="fa-solid fa-plane-circle-check"></i> 대한항공 온라인 체크인 바로가기
+                    </a>
+                </div>
+
+                <div id="powerbank" class="mt-6 bg-rose-50/90 rounded-3xl border-2 border-rose-200 p-6 md:p-8 shadow-sm">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-rose-200/80">
+                        <div class="flex items-center gap-2.5">
+                            <span class="bg-rose-600 text-white w-8 h-8 rounded-xl flex items-center justify-center text-sm shadow-sm shrink-0">
+                                <i class="fa-solid fa-battery-exclamation"></i>
+                            </span>
+                            <div>
+                                <h3 class="font-extrabold text-slate-800 text-base md:text-lg">보조배터리 및 전자담배 기내반입 기준 안내</h3>
+                                <p class="text-xs text-rose-700 font-semibold">대부분 항공사 공통 안전 규정 — 출국 전 전원 확인</p>
+                            </div>
+                        </div>
+                        <span class="bg-white text-rose-700 border border-rose-300 text-xs font-extrabold px-3 py-1 rounded-full">위탁 수하물 절대 금지</span>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-3 text-xs md:text-sm text-slate-700">
+                        <div class="bg-white rounded-2xl p-4 border border-rose-100 flex items-start gap-3">
+                            <i class="fa-solid fa-ban text-rose-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">기내 사용 및 충전 금지 (위탁 수하물 금지)</p>
+                                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">부치는 큰 가방에 넣을 수 없으며, <strong>비행기 안에서도 보조배터리 사용·충전이 금지</strong>됩니다.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-rose-100 flex items-start gap-3">
+                            <i class="fa-solid fa-hand-holding-hand text-rose-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">기내 선반(머리 위 짐칸) 보관 불가</p>
+                                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">선반 가방에 넣지 말고, <strong>직접 휴대하거나 좌석 앞주머니</strong>에 보관해 주세요.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-rose-100 flex items-start gap-3">
+                            <i class="fa-solid fa-shield-halved text-rose-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">단락 방지 조치 필수</p>
+                                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">단자에 <strong>절연테이프</strong> 또는 <strong>투명 비닐백 개별 보관</strong> · 전자담배는 <strong>전원 OFF</strong></p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-rose-100 flex items-start gap-3">
+                            <i class="fa-solid fa-bolt text-rose-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-slate-800">용량 · 개수 제한</p>
+                                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">1인 <strong>최대 2개</strong> · <strong>160Wh 초과 불가</strong> (100~160Wh는 카운터 승인 / 파손·리콜 제품 금지)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-slate-500 mt-5">※ 항공사 정책·당일 공항 사정에 따라 변동될 수 있습니다.</p>
+            </div>
+        </section>
+
         <section id="map-section" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-7xl">
                 <div class="text-center mb-8">
@@ -549,9 +681,18 @@
                     <button onclick="changeMapAndTab('day3')" class="map-tab-btn px-5 py-2 rounded-full text-sm font-bold border bg-white text-slate-600 border-slate-300">3일차 세계창 <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#f59e0b] ml-1"></span></button>
                     <button onclick="changeMapAndTab('day4')" class="map-tab-btn px-5 py-2 rounded-full text-sm font-bold border bg-white text-slate-600 border-slate-300">4일차 귀국 <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#8b5cf6] ml-1"></span></button>
                 </div>
-                <div id="map-wrap">
-                    <div id="map-leg"></div>
+                <div id="map-wrap" class="relative">
                     <div id="map"></div>
+                    <div id="map-distance" class="hidden">
+                        <p class="text-[10px] font-bold text-slate-400 tracking-wide">대략 이동</p>
+                        <p id="map-distance-leg" class="font-bold text-xs text-slate-800 leading-snug mt-0.5"></p>
+                        <p id="map-distance-time" class="font-black text-sm text-tm mt-0.5 leading-snug"></p>
+                        <p id="map-distance-km" class="text-[10px] font-bold text-slate-500 mt-0.5"></p>
+                    </div>
+                    <div class="map-zoom-btns">
+                        <button type="button" onclick="mapZoom(1)" aria-label="줌인">+</button>
+                        <button type="button" onclick="mapZoom(-1)" aria-label="줌아웃">−</button>
+                    </div>
                 </div>
                 <p id="map-hint" class="text-center text-xs text-tm font-bold mt-4">✈️ 전체: 인천 ↔ 심천(보안) 항공</p>
                 <p class="text-center text-xs text-slate-400 mt-1">※ 주요 랜드마크 기준이며 실제 세부 이동과 다를 수 있습니다.</p>
@@ -564,10 +705,14 @@
                     <div>
                         <span class="inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-bold mb-2">OFFICIAL ITINERARY</span>
                         <h2 class="text-3xl font-bold text-slate-800">일자별 상세 일정</h2>
+                        <p class="text-slate-500 text-sm mt-1">탭을 눌러 일자별 상세 내용을 확인하세요. (※ 항공 및 현지 사정에 의해 변동될 수 있습니다)</p>
                     </div>
-                    <button type="button" onclick="window.print()" class="no-print inline-flex items-center justify-center gap-2 self-start sm:self-auto px-5 py-3 text-sm font-extrabold bg-tm text-white rounded-2xl shadow-md hover:bg-tm-dark active:scale-[0.98] transition">
-                        <i class="fa-solid fa-print"></i> 일정표 인쇄하기
-                    </button>
+                    <div class="text-center sm:text-right shrink-0 no-print">
+                        <button type="button" onclick="handlePrint()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-tm hover:bg-tm-dark text-white text-sm font-bold rounded-xl shadow-sm transition-colors" title="일정표 인쇄하기">
+                            <i class="fa-solid fa-print"></i> 일정표 인쇄하기
+                        </button>
+                        <p class="md:hidden mt-2 text-xs text-slate-500 leading-relaxed max-w-[16rem] mx-auto sm:ml-auto sm:mr-0">모바일(카카오톡 등)에서는<br>인쇄가 어려울 수 있어요.<br>다른 브라우저나 PC에서 열어 주세요.</p>
+                    </div>
                 </div>
                 <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
                     <div class="flex flex-wrap border-b bg-slate-50 overflow-x-auto no-scrollbar">
@@ -643,7 +788,7 @@
                         <div class="flex items-center gap-4 mb-8 border-b pb-5">
                             <div class="bg-[#10b981] text-white text-xl font-bold w-12 h-12 rounded-2xl flex items-center justify-center shrink-0">2일</div>
                             <div>
-                                <h3 class="font-bold text-xl text-slate-800">China High-Tech Fair</h3>
+                                <h3 class="font-bold text-xl text-slate-800">제28회 CHTF 2026 · 종일 관람</h3>
                                 <p class="text-emerald-700 text-sm font-medium mt-1"><i class="fa-solid fa-map-location-dot"></i> 호텔 → 심천세계전람성 → 호텔</p>
                                 <div class="mt-2 flex flex-wrap gap-2 text-xs font-bold">
                                     <span class="bg-amber-50 text-amber-700 border border-amber-100 px-2 py-1 rounded">조: 호텔</span>
@@ -657,13 +802,16 @@
                                 <div class="timeline-dot bg-violet-600 ring-violet-100"></div>
                                 <div class="schedule-media">
                                     <div class="schedule-desc">
-                                        <h4 class="font-bold text-lg text-slate-800">China High-Tech Fair</h4>
+                                        <h4 class="font-bold text-lg text-slate-800">제28회 China High-Tech Fair (CHTF 2026)</h4>
                                         <ul class="text-sm text-slate-600 mt-2 space-y-1 list-disc pl-4">
                                             <li>장소: Shenzhen World Exhibition &amp; Convention Center (보안)</li>
-                                            <li>관람 분야: AI·로봇, 반도체, IT/빅데이터, 첨단의료, 청정에너지, 고급기계</li>
-                                            <li>입장권: 사전신청 무료 / 당일발권 120위엔</li>
-                                            <li>통역 포함 시 $80 추가</li>
+                                            <li>관전 포인트: <strong>AI·로봇 · 드론 · 자율주행</strong>, 반도체, IT/빅데이터, 첨단의료, 청정에너지, 고급기계</li>
+                                            <li>관람 팁: 전시 구역을 나눠 걷고, 관심 분야 부스에서 데모·명함을 챙기세요</li>
+                                            <li>입장권: 사전신청 무료 / 당일발권 120위엔 · 통역 포함 시 $80 추가</li>
                                         </ul>
+                                        <div class="mt-3 bg-violet-50 border border-violet-100 rounded-xl p-3 text-xs text-violet-900 leading-relaxed">
+                                            심천은 AI·로봇·드론·자율주행이 빠르게 상용화되는 도시입니다. 박람회에서는 ‘제품 스펙’보다 <strong>현장 적용·비즈니스 모델</strong>을 중심으로 살펴보시면 좋습니다.
+                                        </div>
                                     </div>
                                     <img src="assets/images/day2-expo.jpg" alt="하이테크 박람회" class="schedule-thumb">
                                 </div>
@@ -803,7 +951,7 @@
                             <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2"><i class="fa-solid fa-microchip text-violet-600"></i> China High-Tech Fair</h3>
                             <span class="text-xs font-bold bg-violet-100 text-violet-800 px-2.5 py-1 rounded-full">2일차 · 보안</span>
                         </div>
-                        <p class="text-sm text-slate-600 leading-relaxed">Shenzhen World Exhibition &amp; Convention Center. AI·로봇, 반도체, IT/빅데이터, 첨단의료, 청정에너지, 고급기계 등 하이테크 전시를 관람합니다. 사전신청 무료 / 당일발권 120위엔 · 통역 포함 시 $80 추가.</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">제28회 CHTF 2026 · Shenzhen World Exhibition &amp; Convention Center. AI·로봇·드론·자율주행을 중심으로 반도체·IT·첨단의료·청정에너지·고급기계 전시를 관람합니다. 사전신청 무료 / 당일발권 120위엔 · 통역 포함 시 $80 추가.</p>
                     </article>
                     <article class="border border-slate-200 rounded-3xl p-5 md:p-6 bg-slate-50/80">
                         <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
@@ -1033,32 +1181,36 @@
             </div>
         </section>
 
-        <section id="esg" class="py-16 bg-emerald-50 border-t border-emerald-100">
-            <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-10">
-                        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold shadow-sm mb-3"><i class="fa-solid fa-leaf"></i> Eco-Friendly Tour</span>
-                        <h2 class="text-3xl font-bold text-slate-800">ESG 실천 대시보드</h2>
-                        <p class="text-slate-600 mt-2 font-medium">스마트 가이드북으로 함께하는 ESG 실천</p>
+        <section id="esg" class="py-16 bg-slate-800 text-white">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-5/12 text-center md:text-left">
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-4">
+                            <span class="inline-block bg-emerald-600 text-white text-xs px-4 py-1.5 rounded-full font-bold shadow-md"><i class="fa-solid fa-leaf mr-1"></i> ESG 실천 대시보드</span>
+                            <span class="inline-flex items-center gap-1.5 bg-white/15 border border-white/25 text-amber-300 text-xs px-3.5 py-1.5 rounded-full font-bold shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                                📊 실시간 가이드북 열람 : <strong class="tm-view-count-val text-white">...</strong>회
+                            </span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4 leading-tight">디지털 전환(DX)을 통한<br>친환경 여행 문화</h2>
+                        <p class="text-slate-300 text-sm leading-relaxed">본 행사는 스마트 가이드북 도입을 통해 종이 인쇄를 줄이고, 환경 보호 실천에 동참합니다. (20인 기준)</p>
                     </div>
-                    <div class="bg-white rounded-3xl shadow-lg border border-emerald-100 p-8 md:p-10">
-                        <p class="text-center text-slate-600 mb-10 text-lg leading-relaxed font-medium">
-                            종이 일정표 대신 본 스마트 가이드북을 선택한 오늘,<br class="hidden md:block">
-                            우리는 <strong class="text-emerald-600">1인당 평균 아래의 자원을 절감</strong>하며 숲과 지구를 보호하는 데 동참했습니다.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                            <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
-                                <h4 class="text-slate-500 text-sm font-bold mb-2">종이 절감</h4>
-                                <p class="text-4xl font-black text-slate-800">8<span class="text-lg font-medium text-slate-500 ml-1">장</span></p>
-                            </div>
-                            <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
-                                <h4 class="text-slate-500 text-sm font-bold mb-2">탄소 배출 감소</h4>
-                                <p class="text-4xl font-black text-slate-800">38<span class="text-lg font-medium text-slate-500 ml-1">g</span></p>
-                            </div>
-                            <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
-                                <h4 class="text-slate-500 text-sm font-bold mb-2">물 절약</h4>
-                                <p class="text-4xl font-black text-slate-800">75<span class="text-lg font-medium text-slate-500 ml-1">L</span></p>
-                            </div>
+                    <div class="md:w-7/12 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full">
+                        <div class="bg-amber-500/15 backdrop-blur rounded-3xl p-5 border border-amber-400/30 text-center shadow-lg">
+                            <p class="text-amber-300 text-xs font-bold mb-2">📊 실시간 가이드북 열람</p>
+                            <p class="text-3xl font-black text-white"><span class="tm-view-count-val">--</span><span class="text-sm font-medium ml-1">회</span></p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-5 border border-white/20 text-center shadow-lg">
+                            <p class="text-emerald-300 text-xs font-bold mb-2">종이 절감</p>
+                            <p class="text-3xl font-black">160<span class="text-sm font-medium ml-1">장</span></p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-5 border border-white/20 text-center shadow-lg">
+                            <p class="text-sky-300 text-xs font-bold mb-2">탄소 감소</p>
+                            <p class="text-3xl font-black">0.76<span class="text-sm font-medium ml-1">kg</span></p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-5 border border-white/20 text-center shadow-lg">
+                            <p class="text-blue-300 text-xs font-bold mb-2">물 절약</p>
+                            <p class="text-3xl font-black">1,500<span class="text-sm font-medium ml-1">L</span></p>
                         </div>
                     </div>
                 </div>
@@ -1066,13 +1218,101 @@
         </section>
     </main>
 
-    <footer class="bg-[#f8f9fa] py-12 border-t border-slate-200 text-center no-print">
-        <p class="text-[12px] md:text-[13px] text-[#6c757d] font-normal mb-4 max-w-2xl mx-auto leading-relaxed">
-            본 스마트 가이드북은 <strong class="text-slate-700">투어메이커</strong>가 제작한 심천 하이테크 박람회 여정 안내입니다.
-        </p>
-        <a href="http://tourmaker.kr/" target="_blank" class="text-tm font-bold text-sm hover:underline">tourmaker.kr</a>
-        <p class="text-[10px] text-slate-400 mt-6">TM-261115-SZ · TOURMAKER</p>
+    <footer class="bg-slate-100 pt-10 pb-20 text-center no-print border-t px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-blue-100 shadow-md mb-8 text-left md:text-center">
+                <div class="flex flex-wrap items-center justify-between md:justify-center gap-2 mb-3">
+                    <span class="inline-flex items-center gap-1.5 bg-blue-50 text-tm text-xs font-extrabold px-3 py-1 rounded-full border border-blue-200">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> TOURMAKER SMART GUIDEBOOK
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full">
+                        <i class="fa-solid fa-eye text-tm"></i> 📊 실시간 가이드북 열람 : <strong class="tm-view-count-val text-tm">...</strong>회
+                    </span>
+                </div>
+                <h3 class="text-lg md:text-xl font-extrabold text-slate-800 mb-1.5">우리 모임 · 학교 · 기관도 스마트 가이드북으로 여행을 준비해 보세요</h3>
+                <p class="text-xs md:text-sm text-slate-500 leading-relaxed mb-5">맞춤 일정표, 실시간 도로 동선 지도, 체크리스트가 담긴 전용 웹 가이드북과 투명한 행정을 지원합니다.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button type="button" onclick="openTmInquiryModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-tm hover:bg-tm-dark text-white font-bold px-6 py-3.5 rounded-2xl shadow-md transition active:scale-95 text-sm">
+                        <i class="fa-solid fa-comments"></i> 투어메이커 맞춤 견적 · 상담 문의
+                    </button>
+                    <a href="https://tourmaker.kr/?utm_source=smart_guidebook&amp;utm_medium=footer_btn&amp;utm_campaign=261115_Shenzhen_tm" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold px-5 py-3.5 rounded-2xl border border-slate-200 transition text-sm">
+                        투어메이커 홈페이지 <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-4 border-t border-slate-300/50">
+                <p class="text-[11px] font-black text-tm mb-2 tracking-wider">[System Powered by TOURMAKER]</p>
+                <p class="text-xs text-slate-500 font-medium leading-relaxed">본 스마트 가이드북은 투어메이커의 기획과 트래블 테크 기술 제휴로 제작되었습니다. · TM-261115-SZ</p>
+            </div>
+        </div>
     </footer>
+
+    <div id="tm-inquiry-modal" class="fixed inset-0 z-[120] hidden items-end sm:items-center justify-center bg-black/70 backdrop-blur-sm px-0 sm:px-4 no-print" onclick="closeTmInquiryModal()">
+        <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-100 animate-fade-in-up" onclick="event.stopPropagation()">
+            <div class="bg-gradient-to-r from-[#004098] to-[#002d6b] p-5 text-white flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] font-extrabold tracking-widest uppercase text-sky-200 block">TOURMAKER CONSULTING DESK</span>
+                    <h3 class="font-bold text-lg mt-0.5">투어메이커 맞춤 여행 · 견적 문의</h3>
+                </div>
+                <button type="button" onclick="closeTmInquiryModal()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white" aria-label="닫기">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5 space-y-3 bg-slate-50">
+                <a href="https://pf.kakao.com/_fxjxiQn/chat" target="_blank" rel="noopener" onclick="trackTmInquiry('kakao')" class="flex items-center justify-between p-4 rounded-2xl bg-[#FEE500] hover:brightness-95 text-slate-900 shadow-sm transition active:scale-[0.99]">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-slate-900/10 flex items-center justify-center text-xl font-black">💬</div>
+                        <div class="text-left">
+                            <div class="flex flex-wrap items-center gap-1.5">
+                                <span class="font-extrabold text-sm">카카오톡 비즈니스 1:1 상담</span>
+                                <span class="text-[10px] font-extrabold bg-rose-600 text-white px-2 py-0.5 rounded-full">가장 추천</span>
+                                <span class="text-[10px] font-extrabold bg-slate-900 text-[#FEE500] px-2 py-0.5 rounded-full">조혁 이사 전담</span>
+                            </div>
+                            <p class="text-xs text-slate-800/80 mt-0.5">가장 빠른 상담 · 조혁 이사가 희망 여행지·인원·일정을 바로 응대합니다</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-700 text-xs"></i>
+                </a>
+                <a id="tm-sms-inquiry-link" href="sms:010-4249-4026" onclick="trackTmInquiry('sms')" class="flex items-center justify-between p-4 rounded-2xl bg-white hover:bg-sky-50 border border-sky-200 text-slate-800 shadow-sm transition active:scale-[0.99]">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-lg"><i class="fa-solid fa-comment-sms"></i></div>
+                        <div class="text-left">
+                            <span class="font-extrabold text-sm block">10초 문자(SMS) 간편 견적 문의</span>
+                            <p class="text-xs text-slate-500 mt-0.5">조혁 이사(010-4249-4026)에게 문의 양식이 자동 입력됩니다</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-slate-400 text-xs"></i>
+                </a>
+                <div class="grid grid-cols-3 gap-2">
+                    <a href="tel:010-4249-4026" onclick="trackTmInquiry('call_jo')" class="p-3 rounded-2xl bg-white hover:bg-slate-100 border border-slate-200 text-left shadow-sm transition">
+                        <p class="text-[10px] font-bold text-emerald-700">현장·카톡·견적</p>
+                        <p class="font-extrabold text-sm text-slate-800 mt-0.5">조혁 이사</p>
+                        <p class="text-[11px] font-bold text-slate-600 mt-1"><i class="fa-solid fa-phone mr-0.5 text-emerald-600"></i>010-4249-4026</p>
+                    </a>
+                    <a href="tel:010-9443-7881" onclick="trackTmInquiry('call_lee')" class="p-3 rounded-2xl bg-white hover:bg-slate-100 border border-slate-200 text-left shadow-sm transition">
+                        <p class="text-[10px] font-bold text-tm">총괄·기획</p>
+                        <p class="font-extrabold text-sm text-slate-800 mt-0.5">이재명 대표</p>
+                        <p class="text-[11px] font-bold text-slate-600 mt-1"><i class="fa-solid fa-phone mr-0.5 text-tm"></i>010-9443-7881</p>
+                    </a>
+                    <a href="tel:033-562-2551" onclick="trackTmInquiry('call_office')" class="p-3 rounded-2xl bg-white hover:bg-slate-100 border border-slate-200 text-left shadow-sm transition">
+                        <p class="text-[10px] font-bold text-slate-500">사무실</p>
+                        <p class="font-extrabold text-sm text-slate-800 mt-0.5">투어메이커</p>
+                        <p class="text-[11px] font-bold text-slate-600 mt-1"><i class="fa-solid fa-phone mr-0.5 text-slate-500"></i>033-562-2551</p>
+                    </a>
+                </div>
+                <a href="https://tourmaker.kr/?utm_source=smart_guidebook&amp;utm_medium=inquiry_modal&amp;utm_campaign=261115_Shenzhen_tm" target="_blank" rel="noopener" onclick="trackTmInquiry('website')" class="flex items-center justify-between p-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-sm"><i class="fa-solid fa-globe text-sky-300"></i></div>
+                        <div class="text-left">
+                            <span class="font-bold text-sm block">투어메이커 공식 홈페이지 · 포트폴리오</span>
+                            <p class="text-[11px] text-slate-300 mt-0.5">tourmaker.kr · 대표전화 033-562-2551</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-300"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 translate-y-20 opacity-0 transition-all duration-300 z-[80] no-print">
         <div class="bg-slate-900 text-white text-sm font-bold px-5 py-3 rounded-full shadow-xl"><span id="toast-msg"></span></div>
@@ -1093,6 +1333,17 @@
         window.addEventListener('afterprint', () => { document.title = PAGE_TITLE; });
 
         function showToast(m){const t=document.getElementById('toast');document.getElementById('toast-msg').innerText=m;t.classList.remove('translate-y-20','opacity-0');setTimeout(()=>t.classList.add('translate-y-20','opacity-0'),3000);}
+        function isInAppBrowser() {
+            const ua = (navigator.userAgent || '').toLowerCase();
+            return /kakaotalk|naver|line\/|fbav|instagram|daumapps|everytimeapp|band\//.test(ua);
+        }
+        function handlePrint() {
+            if (isInAppBrowser()) {
+                alert('이 앱에서는 인쇄가 어려워요.\n다른 브라우저나 PC에서 열어 주세요.');
+                return;
+            }
+            window.print();
+        }
         function shareLink(){
             const url = location.href;
             const title = '심천 하이테크 박람회 가이드북';
@@ -1290,6 +1541,17 @@
         function lookAhead(latlngs, t){
             return { a: latLngAlong(latlngs, Math.max(0, t - 0.015)), b: latLngAlong(latlngs, Math.min(1, t + 0.03)) };
         }
+        function fmtDur(sec){
+            if(!sec && sec !== 0) return '';
+            const m = Math.max(1, Math.round(sec / 60));
+            if(m < 60) return `약 ${m}분`;
+            const h = Math.floor(m / 60), rm = m % 60;
+            return rm ? `약 ${h}시간 ${rm}분` : `약 ${h}시간`;
+        }
+        function fmtKm(meters){
+            if(!meters && meters !== 0) return '';
+            return meters >= 1000 ? `${(meters/1000).toFixed(1)} km` : `${Math.round(meters)} m`;
+        }
         async function roadPath(a, b){
             const key = a.join(',')+'|'+b.join(',');
             if(osrmCache[key]) return osrmCache[key];
@@ -1298,19 +1560,35 @@
                 const res = await fetch(url);
                 const data = await res.json();
                 if(data.code === 'Ok' && data.routes && data.routes[0]){
-                    const path = data.routes[0].geometry.coordinates.map(([lng,lat]) => [lat,lng]);
-                    osrmCache[key] = path;
-                    return path;
+                    const r = data.routes[0];
+                    const path = r.geometry.coordinates.map(([lng,lat]) => [lat,lng]);
+                    osrmCache[key] = { path, distance: r.distance, duration: r.duration };
+                    return osrmCache[key];
                 }
             } catch(e) {}
-            return [a, b];
+            return { path: [a, b], distance: null, duration: null };
         }
-        function setMapLeg(fromT, toT){
-            const el = document.getElementById('map-leg');
-            if(!el) return;
-            el.style.display = 'block';
-            el.textContent = fromT + ' → ' + toT;
+        function setMapLeg(fromT, toT, meta){
+            const box = document.getElementById('map-distance');
+            const leg = document.getElementById('map-distance-leg');
+            const time = document.getElementById('map-distance-time');
+            const km = document.getElementById('map-distance-km');
+            if(!box || !leg) return;
+            box.classList.remove('hidden');
+            box.style.display = 'block';
+            leg.textContent = fromT + ' → ' + toT;
+            if(time) time.textContent = (meta && meta.durationText) ? meta.durationText : '';
+            if(km) km.textContent = (meta && meta.distanceText) ? meta.distanceText : '';
         }
+        function hideMapLeg(){
+            const box = document.getElementById('map-distance');
+            if(box){ box.classList.add('hidden'); box.style.display = 'none'; }
+        }
+        function mapZoom(delta){
+            if(!map) return;
+            map.setZoom(map.getZoom() + delta);
+        }
+        window.mapZoom = mapZoom;
         function pinSpot(key){
             const s = spots[key];
             if(!s) return;
@@ -1388,7 +1666,7 @@
         }
         function initMap() {
             if(map || typeof L === 'undefined') return;
-            map = L.map('map', { scrollWheelZoom: false });
+            map = L.map('map', { scrollWheelZoom: false, zoomControl: false });
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                 attribution: 'Tiles © Esri'
             }).addTo(map);
@@ -1428,8 +1706,16 @@
                 if(seq !== mapDrawSeq) return;
                 const a = spots[seg.from], b = spots[seg.to];
                 if(!a || !b) continue;
-                setMapLeg(a.t, b.t);
-                const path = seg.mode === 'flight' ? densifyLine(a.c, b.c, 72) : await roadPath(a.c, b.c);
+                let path, meta = {};
+                if(seg.mode === 'flight' || seg.mode === 'ferry'){
+                    path = densifyLine(a.c, b.c, 72);
+                    meta = { durationText: seg.mode === 'flight' ? '항공 이동' : '페리 이동', distanceText: '' };
+                } else {
+                    const routed = await roadPath(a.c, b.c);
+                    path = routed.path || routed;
+                    meta = { durationText: fmtDur(routed.duration), distanceText: fmtKm(routed.distance) };
+                }
+                setMapLeg(a.t, b.t, meta);
                 if(seq !== mapDrawSeq) return;
                 if(!seg.skipFit){
                     let segBounds = boundsFromKeys(seg.fit || [seg.from, seg.to]);
@@ -1442,15 +1728,14 @@
                 pinSpot(seg.to);
                 if(seg.afterArrive && seg.afterArrive.keys){
                     if(hintEl && seg.afterArrive.hint) hintEl.innerText = seg.afterArrive.hint;
-                    setMapLeg(seg.afterArrive.fromLabel || '도착', seg.afterArrive.toLabel || '화면 확대');
+                    setMapLeg(seg.afterArrive.fromLabel || '도착', seg.afterArrive.toLabel || '화면 확대', { durationText: '현지 동선 확대', distanceText: '' });
                     const zoomBounds = boundsFromKeys(seg.afterArrive.keys);
                     await flyBoundsAsync(zoomBounds, seg.afterArrive, seq);
                     if(seq !== mapDrawSeq) return;
                     if(hintEl) hintEl.innerText = mapHints[dayId] || mapHints.all;
                 }
             }
-            const leg = document.getElementById('map-leg');
-            if(leg && seq === mapDrawSeq) leg.style.display = 'none';
+            if(seq === mapDrawSeq) hideMapLeg();
         }
         window.addEventListener('load', () => {
             initMap();
@@ -1524,6 +1809,7 @@
             `).join('');
         }
         initLiveWidgets();
+        initTmViewCounter();
 
         function clearPhraseFocus(){
             const box = document.getElementById('phrase-focus');
@@ -1651,6 +1937,76 @@
             });
             window.addEventListener('resize', autoResize);
         })();
+    
+        const TM_GUIDEBOOK_SLUG = '261115_Shenzhen_tm';
+        const TM_GUIDEBOOK_NAME = '심천 하이테크 박람회';
+        function openTmInquiryModal() {
+            const m = document.getElementById('tm-inquiry-modal');
+            if (!m) return;
+            const smsLink = document.getElementById('tm-sms-inquiry-link');
+            if (smsLink) {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                const body = encodeURIComponent(`[${TM_GUIDEBOOK_NAME} 가이드북 보고 문의드립니다] 단체/모임명 / 희망지역 / 예상인원 / 출발시기 : `);
+                smsLink.href = `sms:010-4249-4026${isIOS ? '&' : '?'}body=${body}`;
+            }
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+            trackTmInquiry('modal_open');
+        }
+        function closeTmInquiryModal() {
+            const m = document.getElementById('tm-inquiry-modal');
+            if (!m) return;
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+        function trackTmInquiry(action) {
+            try {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'tm_guidebook_inquiry', {
+                        event_category: 'lead',
+                        event_label: `${TM_GUIDEBOOK_SLUG}_${action}`
+                    });
+                }
+            } catch (e) {}
+        }
+        async function initTmViewCounter() {
+            const els = document.querySelectorAll('.tm-view-count-val');
+            if (!els.length) return;
+            const hitKey = 'tm_hit_' + TM_GUIDEBOOK_SLUG;
+            const cacheKey = 'tm_cnt_' + TM_GUIDEBOOK_SLUG;
+            const alreadyHit = sessionStorage.getItem(hitKey);
+            let count = null;
+            try {
+                const mode = alreadyHit ? 'get' : 'hit';
+                const res = await fetch(`https://abacus.jasoncameron.dev/${mode}/tourmaker.kr/${TM_GUIDEBOOK_SLUG}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (typeof data.value === 'number') {
+                        count = data.value;
+                        sessionStorage.setItem(hitKey, '1');
+                    }
+                }
+            } catch (e) {}
+            if (count === null || count === 0) {
+                try {
+                    const res2 = await fetch(`https://tally.yuki.sh/hits/tourmaker/${TM_GUIDEBOOK_SLUG}.json${alreadyHit ? '?mode=read' : ''}`);
+                    if (res2.ok) {
+                        const data2 = await res2.json();
+                        if (typeof data2.visit === 'number') {
+                            count = data2.visit;
+                            sessionStorage.setItem(hitKey, '1');
+                        }
+                    }
+                } catch (e) {}
+            }
+            if (count !== null && count > 0) {
+                localStorage.setItem(cacheKey, String(count));
+            } else {
+                count = parseInt(localStorage.getItem(cacheKey) || '1', 10) || 1;
+            }
+            els.forEach(el => { el.textContent = count.toLocaleString(); });
+        }
+
     </script>
 </body>
 </html>
