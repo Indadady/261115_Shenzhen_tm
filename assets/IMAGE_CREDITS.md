@@ -2,9 +2,9 @@
 
 | File | Source | License / note |
 |------|--------|----------------|
-| tourmaker-logo.png | [260928_Tokyo](https://github.com/Indadady/260928_Tokyo) `assets/images/tourmaker-logo.png` | SYNCVERSE 공식 로고 |
-| hero.jpg | Wikimedia Commons · Ping An Finance Centre | CC / Commons |
-| og-thumb.jpg | hero.jpg 리사이즈 사본 | — |
+| tourmaker-logo.png | [260928_Tokyo](https://github.com/Indadady/260928_Tokyo) `assets/images/tourmaker-logo.png` | 투어메이커 공식 로고 |
+| hero.jpg | [Commons: 20201112 The skyline at Shenzhen Bay.jpg](https://commons.wikimedia.org/wiki/File:20201112_The_skyline_at_Shenzhen_Bay.jpg) | CC · 11월 심천만 스카이라인 · 1800×1200 |
+| og-thumb.jpg | [Commons: Shenzhen Skyline Fuhua Road Ping An International Finance Center.jpg](https://commons.wikimedia.org/wiki/File:Shenzhen_Skyline_Fuhua_Road_Ping_An_International_Finance_Center.jpg) | CC · 핑안 스카이라인 크롭 1200×630 |
 | day1-oct.jpg | Unsplash · city / waterfront atmosphere | Unsplash License |
 | day1-pingan.jpg | Wikimedia Commons · Ping An Finance Centre | CC / Commons |
 | day1-night.jpg | Wikimedia Commons · Dongmen Shenzhen | CC / Commons |
